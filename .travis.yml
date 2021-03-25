@@ -1,11 +1,9 @@
 language: php
 php:
-    - 5.4
-    - 5.5
-    - 5.6
-    - 7.0
-    - 7.1
     - 7.2
+    - 7.3
+    - 7.4
+    - 8.0snapshot
 
 env:
     - PHP_BIN=php
@@ -27,27 +25,40 @@ after_failure:
 
 jobs:
     include:
-        -   stage: Code Standard Checker
-            php: 7.1
+        -   name: Nette Code Checker
             install:
-                # Install Nette Code Checker
-                - travis_retry composer create-project nette/code-checker temp/code-checker ~2 --no-progress
-                # Install Nette Coding Standard
-                - travis_retry composer create-project nette/coding-standard temp/coding-standard --no-progress
+                - travis_retry composer create-project nette/code-checker temp/code-checker ^3.0 --no-progress
+            script:
+                - php temp/code-checker/code-checker --strict-types -i tests/Tracy/fixtures -i examples/assets
+
+
+        -   name: Nette Coding Standard
+            php: 7.4
+            install:
+                - travis_retry composer create-project nette/coding-standard temp/coding-standard ^3 --no-progress
+            script:
+                - php temp/coding-standard/ecs check src tests examples tools
+
+
+        -   name: Code Standard Checker (JS)
+            install:
                 # Install new Node.js and Eslint
                 - . $HOME/.nvm/nvm.sh
                 - nvm install stable
                 - nvm use stable
-                - npm install
                 - npm install eslint
             script:
-                - php temp/code-checker/src/code-checker.php --short-arrays
-                - php temp/coding-standard/ecs check src tests examples tools --config tests/coding-standard.neon
                 - ./node_modules/.bin/eslint "src/**/*.js"
 
 
+        -   stage: Static Analysis (informative)
+            php: 7.4
+            script:
+                - composer run-script phpstan
+
+
         -   stage: Code Coverage
-            php: 7.1
+            php: 7.4
             script:
                 - vendor/bin/tester -p phpdbg tests -s --coverage ./coverage.xml --coverage-src ./src
             after_script:
@@ -56,10 +67,13 @@ jobs:
 
 
     allow_failures:
+        -   stage: Static Analysis (informative)
         -   stage: Code Coverage
 
 
-sudo: false
+os: linux
+
+dist: xenial
 
 cache:
     directories:

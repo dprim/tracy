@@ -7,8 +7,9 @@
  * @outputMatch %A%<h1>Server Error</h1>%A%
  */
 
-use Tracy\Debugger;
+declare(strict_types=1);
 
+use Tracy\Debugger;
 
 require __DIR__ . '/../bootstrap.php';
 

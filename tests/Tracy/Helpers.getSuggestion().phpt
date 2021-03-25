@@ -4,9 +4,10 @@
  * Test: Tracy\Helpers::getSuggestion()
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Helpers;
-
 
 require __DIR__ . '/../bootstrap.php';
 

@@ -4,24 +4,25 @@
  * Test: Tracy\Debugger logging error.
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Debugger;
-
 
 require __DIR__ . '/../bootstrap.php';
 
 
 Assert::exception(function () {
 	Debugger::log('Hello');
-}, 'LogicException', 'Directory is not specified.');
+}, LogicException::class, 'Logging directory is not specified.');
 
 
 // no error
-Debugger::$logDirectory = TEMP_DIR;
+Debugger::$logDirectory = getTempDir();
 Debugger::log('Hello');
 
 
-Debugger::$logDirectory = TEMP_DIR . '/unknown';
+Debugger::$logDirectory = getTempDir() . '/unknown';
 Assert::exception(function () {
 	Debugger::log('Hello');
-}, 'RuntimeException', "Directory '%a%' is not found or is not directory.");
+}, RuntimeException::class, "Logging directory '%a%' is not found or is not directory.");

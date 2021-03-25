@@ -7,9 +7,10 @@
  * @outputMatch OK!
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Debugger;
-
 
 require __DIR__ . '/../bootstrap.php';
 
@@ -31,7 +32,7 @@ register_shutdown_function(function () use (&$onFatalErrorCalled) {
 	Assert::true($onFatalErrorCalled);
 	$output = ob_get_clean();
 	Assert::same(1, substr_count($output, '<!-- Tracy Debug Bar'));
-	Assert::matchFile(__DIR__ . '/expected/Debugger.E_ERROR.html' . (PHP_MAJOR_VERSION > 5 ? '' : (extension_loaded('xdebug') ? '.xdebug' : '.php5')) . '.expect', $output);
+	Assert::matchFile(__DIR__ . '/expected/Debugger.E_ERROR.html.expect', $output);
 	echo 'OK!'; // prevents PHP bug #62725
 });
 

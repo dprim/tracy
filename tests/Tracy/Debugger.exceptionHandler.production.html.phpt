@@ -7,8 +7,9 @@
  * @outputMatch %A%<title>Server Error</title>%A%Tracy is unable to log error%A%
  */
 
-use Tracy\Debugger;
+declare(strict_types=1);
 
+use Tracy\Debugger;
 
 require __DIR__ . '/../bootstrap.php';
 

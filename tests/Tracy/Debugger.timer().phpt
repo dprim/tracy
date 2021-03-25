@@ -4,9 +4,10 @@
  * Test: Tracy\Debugger::timer()
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Debugger;
-
 
 require __DIR__ . '/../bootstrap.php';
 

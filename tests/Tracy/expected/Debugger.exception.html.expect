@@ -6,20 +6,21 @@
 	<meta name="generator" content="Tracy by Nette Framework">
 
 	<title>Exception: The my exception #123</title>
+	<!-- in %a%:%d% -->
 
 	%A%
 </head>
 
 
 <body>
-<div id="tracy-bs">
+<div id="tracy-bs" itemscope>
 	<a id="tracy-bs-toggle" href="#" class="tracy-toggle"></a>
-	<div>
+	<div class="tracy-bs-main">
 		<div id="tracy-bs-error" class="panel">
 			<p>Exception #123</p>
 
 			<h1><span>The my exception</span>
-			<a href="%a%" rel="noreferrer noopener">search&#x25ba;</a>
+						<a href="%a%" target="_blank" rel="noreferrer noopener">search&#x25ba;</a>
 			</h1>
 		</div>
 
@@ -36,7 +37,7 @@
 
 			<div class="inner">
 				<p><b>File:</b> %a%</p>
-				<pre data-tracy-href="%a%" class='code'>%A%</pre>			</div></div>
+				<pre title="Ctrl-Click to open in editor" data-tracy-href="%a%" class='code'>%A%</pre>			</div></div>
 
 
 									<div class="panel">
@@ -46,9 +47,9 @@
 				<ol>
 										<li><p>
 
-											<a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%">%a%<b>Debugger.exception.html.phpt</b>:%d%</a>
+											<a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%" class="tracy-editor">%a%<b>Debugger.exception.html.phpt</b>:%d%</a>
 					<a data-tracy-ref="^p + .file" class="tracy-toggle tracy-collapsed">source</a>&nbsp;
-					third(<a data-tracy-ref="^p + .args" class="tracy-toggle tracy-collapsed">arguments</a>)
+					<b>third</b> (<a data-tracy-ref="^p + .args" class="tracy-toggle tracy-collapsed">arguments</a>)
 					</p>
 
 											<div class="tracy-collapsed file">%A%</div>
@@ -56,16 +57,16 @@
 
 											<div class="tracy-collapsed outer args">
 						<table>
-						<tr><th>$arg1</th><td><pre class="tracy-dump" data-tracy-dump='[[0,1],[1,2],[2,3]]'></pre>
+						<tr><th>$arg1</th><td><pre class="tracy-dump tracy-light" data-tracy-dump='[[0,1],[1,2],[2,3]]'></pre>
 </td></tr>
 						</table>
 						</div>
 										</li>
 										<li><p>
 
-											<a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%">%a%<b>Debugger.exception.html.phpt</b>:%d%</a>
+											<a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%" class="tracy-editor">%a%<b>Debugger.exception.html.phpt</b>:%d%</a>
 					<a data-tracy-ref="^p + .file" class="tracy-toggle tracy-collapsed">source</a>&nbsp;
-					second(<a data-tracy-ref="^p + .args" class="tracy-toggle tracy-collapsed">arguments</a>)
+					<b>second</b> (<a data-tracy-ref="^p + .args" class="tracy-toggle tracy-collapsed">arguments</a>)
 					</p>
 
 											<div class="tracy-collapsed file">%A%</div>
@@ -73,20 +74,18 @@
 
 											<div class="tracy-collapsed outer args">
 						<table>
-						<tr><th>$arg1</th><td><pre class="tracy-dump"><span class="tracy-dump-bool">true</span>
-</pre>
+						<tr><th>$arg1</th><td><pre class="tracy-dump tracy-light"><span class="tracy-dump-bool">true</span></pre>
 </td></tr>
-<tr><th>$arg2</th><td><pre class="tracy-dump"><span class="tracy-dump-bool">false</span>
-</pre>
+<tr><th>$arg2</th><td><pre class="tracy-dump tracy-light"><span class="tracy-dump-bool">false</span></pre>
 </td></tr>
 						</table>
 						</div>
 										</li>
 										<li><p>
 
-											<a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%">%a%<b>Debugger.exception.html.phpt</b>:%d%</a>
+											<a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%" class="tracy-editor">%a%<b>Debugger.exception.html.phpt</b>:%d%</a>
 					<a data-tracy-ref="^p + .file" class="tracy-toggle tracy-collapsed">source</a>&nbsp;
-					first(<a data-tracy-ref="^p + .args" class="tracy-toggle tracy-collapsed">arguments</a>)
+					<b>first</b> (<a data-tracy-ref="^p + .args" class="tracy-toggle tracy-collapsed">arguments</a>)
 					</p>
 
 											<div class="tracy-collapsed file">%A%</div>
@@ -94,11 +93,9 @@
 
 											<div class="tracy-collapsed outer args">
 						<table>
-						<tr><th>$arg1</th><td><pre class="tracy-dump"><span class="tracy-dump-number">10</span>
-</pre>
+						<tr><th>$arg1</th><td><pre class="tracy-dump tracy-light"><span class="tracy-dump-number">10</span></pre>
 </td></tr>
-<tr><th>$arg2</th><td><pre class="tracy-dump"><span class="tracy-dump-string">"any string"</span> (10)
-</pre>
+<tr><th>$arg2</th><td><pre class="tracy-dump tracy-light"><span class="tracy-dump-string" title="10 characters"><span>'</span>any string<span>'</span></span></pre>
 </td></tr>
 						</table>
 						</div>
@@ -116,8 +113,8 @@
 		<h2><a data-tracy-ref="^+" class="tracy-toggle tracy-collapsed">Last muted error</a></h2>
 		<div class="tracy-collapsed inner">
 
-		<h3>Notice: Undefined variable: undefined</h3>
-					<p><a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%">%a%<b>Debugger.exception.html.phpt</b>:%d%</a></p>
+		<h3>Warning: hex2bin(): Hexadecimal input string must have an even length</h3>
+					<p><a href="editor:%a%" title="%a%Debugger.exception.html.phpt:%d%" class="tracy-editor">%a%<b>Debugger.exception.html.phpt</b>:%d%</a></p>
 			<div>%A%</div>
 
 		</div></div>
@@ -125,13 +122,13 @@
 
 
 
-		<div class="panel">
+				<div class="panel">
 		<h2><a data-tracy-ref="^+" class="tracy-toggle tracy-collapsed">Environment</a></h2>
 
 		<div class="tracy-collapsed inner">
 			<h3><a data-tracy-ref="^+" class="tracy-toggle">$_SERVER</a></h3>
 			<div class="outer">
-			<table>%A%</table>
+			<table class="tracy-sortable">%A%</table>
 			</div>
 
 
@@ -143,7 +140,7 @@
 
 						<h3><a data-tracy-ref="^+" class="tracy-toggle tracy-collapsed">Constants</a></h3>
 			<div class="outer tracy-collapsed">
-			<table>%A%</table>
+			<table class="tracy-sortable">%A%</table>
 			</div>
 
 
@@ -153,7 +150,7 @@
 		</div></div>
 
 
-		<div class="panel">
+				<div class="panel">
 		<h2><a data-tracy-ref="^+" class="tracy-toggle tracy-collapsed">HTTP request</a></h2>
 
 		<div class="tracy-collapsed inner">
@@ -172,19 +169,20 @@
 
 		<div class="tracy-collapsed inner">
 			<h3>Headers</h3>
-						<pre>%A%</pre>
+						<div class="outer">%A%</div>
 					</div></div>
 
 
 
-
-		<ul>
-			<li>Report generated at %a%</li>
-			<li>CLI%a?%</li>
-			<li>PHP %a%</li>		</ul>
-
-		<div id="tracy-bs-logo"><a href="https://tracy.nette.org" rel="noreferrer"></a></div>
+		<footer>
+			<ul>
+				<li><b><a href="%a%" target="_blank" rel="noreferrer noopener">%a%️</a></b></li>
+				<li>Report generated at %a%</li>
+				<li>PHP %a%</li>			</ul>
+			<div class="footer-logo"><a href="https://tracy.nette.org" rel="noreferrer"></a></div>
+		</footer>
 	</div>
+	<meta itemprop=tracy-snapshot content=%a%>
 </div>
 
 <script>%A%</script>

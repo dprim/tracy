@@ -7,9 +7,10 @@
  * @outputMatch OK!
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Debugger;
-
 
 require __DIR__ . '/../bootstrap.php';
 
@@ -32,14 +33,14 @@ Stack trace:
 #1 %a%: second()
 #2 %a%: first()
 #3 {main}
-Unable to log error: Directory is not specified.
+Unable to log error: Logging directory is not specified.
 ' : '
 Fatal error: Cannot re-assign $this in %a%
 ErrorException: Cannot re-assign $this in %a%
 Stack trace:
 #0 [internal function]: Tracy\\Debugger::shutdownHandler()
 #1 {main}
-Unable to log error: Directory is not specified.
+Unable to log error: Logging directory is not specified.
 ', ob_get_clean());
 	echo 'OK!'; // prevents PHP bug #62725
 });

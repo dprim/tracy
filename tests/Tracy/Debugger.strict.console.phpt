@@ -7,8 +7,9 @@
  * @outputMatchFile expected/Debugger.strict.console.expect
  */
 
-use Tracy\Debugger;
+declare(strict_types=1);
 
+use Tracy\Debugger;
 
 require __DIR__ . '/../bootstrap.php';
 
@@ -34,7 +35,7 @@ function second($arg1, $arg2)
 
 function third($arg1)
 {
-	$x++;
+	$x = &pi();
 }
 
 

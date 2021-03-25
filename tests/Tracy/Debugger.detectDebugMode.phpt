@@ -4,15 +4,16 @@
  * Test: Tracy\Debugger::detectDebugMode()
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Debugger;
-
 
 require __DIR__ . '/../bootstrap.php';
 
 
 
-test(function () { // localhost
+test('localhost', function () {
 	unset($_SERVER['HTTP_X_FORWARDED_FOR']);
 
 	$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
@@ -34,7 +35,7 @@ test(function () { // localhost
 });
 
 
-test(function () { // localhost + proxy
+test('localhost + proxy', function () {
 	$_SERVER['HTTP_X_FORWARDED_FOR'] = 'xx';
 
 	$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
@@ -49,7 +50,7 @@ test(function () { // localhost + proxy
 });
 
 
-test(function () { // missing $_SERVER['REMOTE_ADDR']
+test('missing $_SERVER[REMOTE_ADDR]', function () {
 	unset($_SERVER['HTTP_X_FORWARDED_FOR'], $_SERVER['REMOTE_ADDR']);
 
 	Assert::false(Debugger::detectDebugMode());
@@ -60,7 +61,7 @@ test(function () { // missing $_SERVER['REMOTE_ADDR']
 });
 
 
-test(function () { // secret
+test('secret', function () {
 	unset($_SERVER['HTTP_X_FORWARDED_FOR']);
 	$_SERVER['REMOTE_ADDR'] = '192.168.1.1';
 	$_COOKIE[Debugger::COOKIE_SECRET] = '*secret*';
@@ -75,7 +76,7 @@ test(function () { // secret
 });
 
 
-test(function () {
+test('', function () {
 	unset($_SERVER['HTTP_X_FORWARDED_FOR']);
 	$_SERVER['REMOTE_ADDR'] = 'xx';
 

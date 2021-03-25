@@ -7,9 +7,10 @@
  * @outputMatch %A?%OK!
  */
 
+declare(strict_types=1);
+
 use Tester\Assert;
 use Tracy\Debugger;
-
 
 require __DIR__ . '/../bootstrap.php';
 
@@ -17,7 +18,7 @@ require __DIR__ . '/../bootstrap.php';
 // Setup environment
 $_SERVER['HTTP_HOST'] = 'nette.org';
 
-Debugger::$logDirectory = TEMP_DIR;
+Debugger::$logDirectory = getTempDir();
 
 Debugger::getLogger()->mailer = function () {};
 

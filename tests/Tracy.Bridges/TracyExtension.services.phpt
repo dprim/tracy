@@ -1,8 +1,6 @@
 <?php
 
-/**
- * Test: TracyExtension accessors.
- */
+declare(strict_types=1);
 
 use Nette\DI;
 use Tester\Assert;
@@ -21,17 +19,21 @@ class CustomLogger implements ILogger
 
 
 $compiler = new DI\Compiler;
+$compiler->setClassName('Container');
 $compiler->addExtension('tracy', new TracyExtension);
 $compiler->addConfig([
 	'tracy' => [
 		'logSeverity' => 'E_USER_WARNING',
+		'keysToHide' => ['abc'],
 	],
 	'services' => [
 		'tracy.logger' => 'CustomLogger',
 	],
 ]);
 
-eval(@$compiler->compile([], 'Container')); // @ compatiblity with DI 2.3 & 2.4
+eval($compiler->compile());
+
+Tracy\Debugger::enable();
 
 $container = new Container;
 $container->initialize();
@@ -45,3 +47,5 @@ Assert::same(Tracy\Debugger::getBlueScreen(), $container->getService('tracy.blue
 Assert::same(Tracy\Debugger::getBar(), $container->getService('tracy.bar'));
 
 Assert::same(E_USER_WARNING, Tracy\Debugger::$logSeverity);
+Assert::contains('password', Tracy\Debugger::getBlueScreen()->keysToHide);
+Assert::contains('abc', Tracy\Debugger::getBlueScreen()->keysToHide);
